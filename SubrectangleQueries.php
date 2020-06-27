@@ -1,12 +1,19 @@
 <?php
 
 
-class SubrectangleQueries {
+class SubrectangleQueries
+{
+    /**
+     * @var Integer[][]
+     */
+    private $rectangle;
+
     /**
      * @param Integer[][] $rectangle
      */
-    function __construct($rectangle) {
-
+    function __construct($rectangle)
+    {
+        $this->rectangle = $rectangle;
     }
 
     /**
@@ -17,8 +24,13 @@ class SubrectangleQueries {
      * @param Integer $newValue
      * @return NULL
      */
-    function updateSubrectangle($row1, $col1, $row2, $col2, $newValue) {
-
+    function updateSubrectangle($row1, $col1, $row2, $col2, $newValue)
+    {
+        for ($row = $row1; $row <= $row2; $row++) {
+            for ($col = $col1; $col <= $col2; $col++) {
+                $this->rectangle[$row][$col] = $newValue;
+            }
+        }
     }
 
     /**
@@ -26,8 +38,9 @@ class SubrectangleQueries {
      * @param Integer $col
      * @return Integer
      */
-    function getValue($row, $col) {
-
+    function getValue($row, $col)
+    {
+        return $this->rectangle[$row][$col];
     }
 }
 
